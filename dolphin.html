@@ -1,67 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Happy Birthday,Dolphin🐬!</title>
-    <style>
-        body {
-            background: linear-gradient(to bottom right, #f9bbd3, #a8e6cf);
-            font-family: 'Segoe UI', cursive, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-        }
-        .banner {
-            margin-top: 60px;
-            padding: 25px 35px;
-            border-radius: 25px;
-            background: #fff;
-            box-shadow: 0 6px 22px rgba(0,0,0,0.16);
-            text-align: center;
-        }
-        h1 {
-            color: #d72660;
-        }
-        .theme-img {
-            margin-top: 28px;
-            width:210px;
-            border-radius: 18px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-        }
-        .msg {
-            font-size: 23px;
-            color: #034f84;
-            margin: 30px auto 20px auto;
-        }
-        .heart {
-            animation: heartbeat 1s infinite;
-            font-size: 42px;
-            color: #d72660;
-        }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            14% { transform: scale(1.2); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.4); }
-            70% { transform: scale(1); }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>for cutu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #d8efff, #bcdfff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page {
+    position: absolute;
+    width: 90%;
+    max-width: 500px;
+    height: 80vh;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    text-align: center;
+}
+
+.active {
+    display: flex;
+}
+
+h1 {
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+button {
+    padding: 12px 28px;
+    border-radius: 30px;
+    border: none;
+    background: white;
+    color: #2c3e50;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin: 10px;
+    position: relative;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.reward-gif {
+    width: 220px;
+    margin-top: 20px;
+    display: none;
+}
+
+.football {
+    position: absolute;
+    top: -50px;
+    font-size: 28px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh); }
+}
+</style>
 </head>
+
 <body>
-    <div class="banner">
-        <h1>Happy Birthday, <span style="color:#034f84">My Dolphin🐬</span></h1>
-        <img src="/mygurl.jpg" class="theme-img" alt="mygurl" height="200">
-        <div class="msg">
-            Janamdin ki hardik shubhkamnayein! <br>
-            Aaj Krishna Radha ki vibes ke saath, tujhpe pura pyaar barsa raha hoon. <br>
-            Tu smile kare, jaise radha krishna ki jodi!<br>
-            <span style="font-size:18px; color:#444;">(Tu hai meri inspiration aur reason khush rehne ka!)</span>
-        </div>
-        <div class="heart">💖</div>
-        <div style="margin-top:16px; font-size:18px; color:#d72660;">
-            - From lucky😉
-        </div>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <h1>hi cutu 💙</h1>
+    <div style="width:220px;height:220px;margin-bottom:20px;">
+        <img src="/YOUR_FIRST_GIF_HERE.gif" style="width:100%;height:100%;object-fit:contain;">
     </div>
+    <button onclick="nextPage(2)">next →</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <h1>okay wait...</h1>
+    <p>this might be dramatic but stay with me</p>
+    <button onclick="nextPage(3)">continue →</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+    <h1>since you didnt return my football ⚽</h1>
+    <button onclick="nextPage(4)">next →</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+    <h1>look what you started ⚽</h1>
+    <button onclick="nextPage(5)">next →</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+    <h1>are you still gonna ignore me?</h1>
+
+    <div>
+        <button id="yesBtn" onmouseover="teaseYes()">yes</button>
+        <button onclick="showReward()">no</button>
+    </div>
+
+    <!-- PUT YOUR REWARD GIF BELOW -->
+    <img src="/YOUR_SECOND_GIF_HERE.gif" class="reward-gif" id="rewardGif">
+</div>
+
+<script>
+function nextPage(page) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById("page" + page).classList.add("active");
+
+    if(page === 4){
+        startFootballRain();
+    }
+}
+
+function startFootballRain(){
+    for(let i=0; i<25; i++){
+        let ball = document.createElement("div");
+        ball.classList.add("football");
+        ball.innerHTML = "⚽";
+        ball.style.left = Math.random() * 100 + "vw";
+        ball.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(ball);
+    }
+}
+
+function teaseYes(){
+    let btn = document.getElementById("yesBtn");
+    btn.style.transform = `translate(${Math.random()*200-100}px, ${Math.random()*200-100}px)`;
+    btn.style.fontSize = (Math.random()*5 + 14) + "px";
+}
+
+function showReward(){
+    document.getElementById("rewardGif").style.display = "block";
+}
+</script>
+
 </body>
 </html>
